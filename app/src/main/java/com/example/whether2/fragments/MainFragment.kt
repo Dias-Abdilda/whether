@@ -1,4 +1,4 @@
-package fragments
+package com.example.whether2.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

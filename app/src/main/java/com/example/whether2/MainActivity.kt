@@ -3,7 +3,7 @@ package com.example.whether2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.whether2.R
-import fragments.mainFragment
+import com.example.whether2.fragments.mainFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
