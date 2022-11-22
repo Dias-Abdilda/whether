@@ -36,7 +36,7 @@ class WeatherAdapter: ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparato
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-
+    holder.bind(getItem(position))
     }
 }
 
