@@ -27,7 +27,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:backgroundTint="@color/card_blue_bg"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,8 @@
                 android:id="@+id/tvData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:text="21.11.2022 14:00"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +117,8 @@
                 android:layout_marginEnd="16dp"
                 android:background="@null"
                 android:src="@drawable/ic_baseline_sync_24"
+                app:circularflow_radiusInDP="20dp"
+                app:layout_constraintCircleRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ibSearch" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,6 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:backgroundTint="@color/card_blue_bg"
+        app:circularflow_defaultRadius="20dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -135,7 +139,9 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hours" />
+            android:text="Hours"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="214dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
