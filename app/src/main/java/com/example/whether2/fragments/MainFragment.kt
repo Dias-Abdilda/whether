@@ -15,7 +15,7 @@ import com.example.whether2.adapters.VpAdapter
 import com.example.whether2.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class mainFragment : Fragment() {
+class MainFragment : Fragment() {
 
     private val fList = listOf(
         HoursFragment.newInstance(),
@@ -46,16 +46,16 @@ class mainFragment : Fragment() {
         val adapter = VpAdapter(activity as FragmentActivity, fList)
         vp.adapter = adapter
         TabLayoutMediator(tabLayout, vp){
-            tab, pos -> tab.text = tList[pos]
+                tab, pos -> tab.text = tList[pos]
         }.attach()
     }
 
-   private fun permissionListener(){
-       pLauncher = registerForActivityResult(
-           ActivityResultContracts.RequestPermission()){
-           Toast.makeText(activity, "Permission is $it", Toast.LENGTH_LONG).show()
-       }
-   }
+    private fun permissionListener(){
+        pLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()){
+            Toast.makeText(activity, "Permission is $it", Toast.LENGTH_LONG).show()
+        }
+    }
     private fun checkPermission(){
         if(!isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)){
             permissionListener()
@@ -65,6 +65,6 @@ class mainFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = mainFragment()
+        fun newInstance() = MainFragment()
     }
 }
