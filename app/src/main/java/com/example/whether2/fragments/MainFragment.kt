@@ -2,20 +2,25 @@ package com.example.whether2.fragments
 
 import android.Manifest
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.example.whether2.R
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.whether2.adapters.VpAdapter
 import com.example.whether2.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainFragment : Fragment() {
+const val API_KEY = "f505eb698c734e45b7a51806221011"
+
+class  MainFragment : Fragment() {
 
     private val fList = listOf(
         HoursFragment.newInstance(),
@@ -40,6 +45,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         checkPermission()
         init()
+        requestWeatherData("London")
     }
 
     private fun init() = with(binding){
@@ -61,6 +67,29 @@ class MainFragment : Fragment() {
             permissionListener()
             pLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
+    }
+
+    private fun requestWeatherData(city: String){
+        val url = "https://api.weatherapi.com/v1/forecast.json?key=" +
+                API_KEY +
+                "&q=" +
+                city +
+                "&days=" +
+                "3" +
+                "&aqi=no&alerts=no"
+        val queue =  Volley.newRequestQueue(context)
+        val request = StringRequest(
+            Request.Method.GET,
+            url,
+            {
+                result ->Log.d("Mylog","Result: $result")
+            },
+            {
+                error -> Log.d("Mylog","Error: $error")
+            }
+        )
+        queue.add(request)
+
     }
 
     companion object {

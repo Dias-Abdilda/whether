@@ -6,4 +6,8 @@
     <string name="days">DAYS</string>
     <string name="hours">HOURS</string>
     <string name="Empty" />
+    <string name="lunes_22_11_2022">Lunes 22/11/2022</string>
+    <string name="sunny">Sunny</string>
+    <string name="_20_c">20 °C</string>
+    <string name="todo">TODO</string>
 </resources>

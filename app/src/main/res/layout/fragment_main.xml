@@ -54,7 +54,8 @@
                 android:layout_height="40dp"
                 android:src="@drawable/ic_launcher_foreground"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/tvCity"
@@ -105,6 +106,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
                 android:background="@null"
+                android:contentDescription="TODO"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 android:src="@drawable/ic_baseline_search_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +120,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:background="@null"
+                android:contentDescription="TODO"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 android:src="@drawable/ic_baseline_sync_24"
                 app:circularflow_radiusInDP="20dp"
                 app:layout_constraintCircleRadius="20dp"
@@ -140,13 +147,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hours"
+            android:visibility="visible"
             tools:layout_editor_absoluteX="7dp"
             tools:layout_editor_absoluteY="214dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Days" />
+            android:text="Days"
+            android:visibility="visible" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -155,6 +164,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
