@@ -84,7 +84,7 @@ class  MainFragment : Fragment() {
             Request.Method.GET,
             url,
             {
-                result ->Log.d("Mylog","Result: $result")
+                result -> parseWeatherData(result)
             },
             {
                 error -> Log.d("Mylog","Error: $error")
@@ -106,7 +106,11 @@ class  MainFragment : Fragment() {
             mainObject.getJSONObject("current").getJSONObject("condition").getString("icon"),
             ""
         )
-
+        Log.d("MyLog","City: ${item.city}")
+        Log.d("MyLog","Time: ${item.time}")
+        Log.d("MyLog","Condition: ${item.condition}")
+        Log.d("MyLog","Temp: ${item.currentTemp}")
+        Log.d("MyLog","Url: ${item.imageUrl}")
     }
 
     companion object {
