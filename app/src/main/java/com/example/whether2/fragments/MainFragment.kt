@@ -15,8 +15,10 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.whether2.adapters.VpAdapter
+import com.example.whether2.adapters.WeatherModel
 import com.example.whether2.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import org.json.JSONObject
 
 const val API_KEY = "f505eb698c734e45b7a51806221011"
 
@@ -89,6 +91,21 @@ class  MainFragment : Fragment() {
             }
         )
         queue.add(request)
+
+    }
+
+    private fun parseWeatherData(result: String) {
+        val mainObject = JSONObject(result)
+        val item = WeatherModel(
+            mainObject.getJSONObject("location").getString("name"),
+            mainObject.getJSONObject("current").getString("last_updated"),
+            mainObject.getJSONObject("current").getJSONObject("condition").getString("text"),
+            mainObject.getJSONObject("current").getString("temp_c"),
+            "",
+            "",
+            mainObject.getJSONObject("current").getJSONObject("condition").getString("icon"),
+            ""
+        )
 
     }
 
