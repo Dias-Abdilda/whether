@@ -96,6 +96,10 @@ class  MainFragment : Fragment() {
 
     private fun parseWeatherData(result: String) {
         val mainObject = JSONObject(result)
+
+    }
+
+    private fun parseCurrentData(mainObject: JSONObject){
         val item = WeatherModel(
             mainObject.getJSONObject("location").getString("name"),
             mainObject.getJSONObject("current").getString("last_updated"),
@@ -111,10 +115,6 @@ class  MainFragment : Fragment() {
         Log.d("MyLog","Condition: ${item.condition}")
         Log.d("MyLog","Temp: ${item.currentTemp}")
         Log.d("MyLog","Url: ${item.imageUrl}")
-    }
-
-    private fun parseCurrentData(mainObject: JSONObject){
-
     }
 
     companion object {
