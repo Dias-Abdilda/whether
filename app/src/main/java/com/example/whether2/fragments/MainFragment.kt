@@ -20,7 +20,7 @@ import com.example.whether2.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import org.json.JSONObject
 
-const val API_KEY = "f505eb698c734e45b7a51806221011"
+const val API_KEY = "132318b148ed40248e2103216222511"
 
 class  MainFragment : Fragment() {
 
@@ -111,6 +111,10 @@ class  MainFragment : Fragment() {
         Log.d("MyLog","Condition: ${item.condition}")
         Log.d("MyLog","Temp: ${item.currentTemp}")
         Log.d("MyLog","Url: ${item.imageUrl}")
+    }
+
+    private fun parseCurrentData(mainObject: JSONObject){
+
     }
 
     companion object {
