@@ -13,6 +13,7 @@ import com.example.whether2.R
 import com.example.whether2.adapters.WeatherAdapter
 import com.example.whether2.adapters.WeatherModel
 import com.example.whether2.databinding.FragmentHoursBinding
+import org.json.JSONArray
 import kotlin.math.max
 import kotlin.math.min
 
@@ -35,7 +36,7 @@ private val model: MainViewModel by activityViewModels()
         super.onViewCreated(view, savedInstanceState)
         initRcView()
         model.liveDataCurrent.observe(viewLifecycleOwner){
-            Log.d("MyLog","City: ${it.hours}")
+
         }
 
     }
@@ -43,12 +44,20 @@ private val model: MainViewModel by activityViewModels()
         rcView.layoutManager = LinearLayoutManager(activity)
         adapter= WeatherAdapter()
         rcView.adapter=adapter
-        val list = listOf(
-            WeatherModel(city = "", time = "12:00", condition = "Sunny", currentTemp = "25'C" , maxTemp = "", minTemp = "", imageUrl = "", hours = ""),
-                    WeatherModel(city = "", time = "13:00", condition = "Sunny", currentTemp = "25'C" , maxTemp = "", minTemp = "", imageUrl = "", hours = ""),
-            WeatherModel(city = "", time = "14:00", condition = "Sunny", currentTemp = "35'C" , maxTemp = "", minTemp = "", imageUrl = "", hours = "")
-        )
-        adapter.submitList(list)
+
+
+    }
+    private fun getHoursList(item: WeatherModel): List<WeatherModel>{
+        val  hoursArray= JSONArray(item.hours)
+        val list = ArrayList<WeatherModel>()
+        for (i in 0 until hoursArray.length()){
+            val item = WeatherModel (
+
+                    )
+
+
+        }
+
     }
     companion object {
 
