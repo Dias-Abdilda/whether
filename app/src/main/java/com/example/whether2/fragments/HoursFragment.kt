@@ -14,6 +14,7 @@ import com.example.whether2.adapters.WeatherAdapter
 import com.example.whether2.adapters.WeatherModel
 import com.example.whether2.databinding.FragmentHoursBinding
 import org.json.JSONArray
+import org.json.JSONObject
 import kotlin.math.max
 import kotlin.math.min
 
@@ -36,7 +37,7 @@ private val model: MainViewModel by activityViewModels()
         super.onViewCreated(view, savedInstanceState)
         initRcView()
         model.liveDataCurrent.observe(viewLifecycleOwner){
-
+        adapter.submitList(getHoursList(it))
         }
 
     }
@@ -47,16 +48,28 @@ private val model: MainViewModel by activityViewModels()
 
 
     }
-    private fun getHoursList(item: WeatherModel): List<WeatherModel>{
-        val  hoursArray= JSONArray(item.hours)
+    private fun getHoursList(wItem: WeatherModel): List<WeatherModel>{
+        val  hoursArray= JSONArray(wItem.hours)
         val list = ArrayList<WeatherModel>()
         for (i in 0 until hoursArray.length()){
             val item = WeatherModel (
+                wItem.city,
+                (hoursArray[i] as JSONObject).getString("time"),
+                    (hoursArray[i] as JSONObject).getJSONObject("condition")
+                        .getString("text"),
+                            (hoursArray[i] as JSONObject).getString("temp_c"),
+                                 "",
+                                    "",
+                (hoursArray[i] as JSONObject).getJSONObject("condition")
+                    .getString("icon"),
+                "",
 
                     )
+            list.add(item)
 
 
         }
+        return list
 
     }
     companion object {
