@@ -1,11 +1,14 @@
 package com.example.whether2.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.whether2.MainViewModel
 import com.example.whether2.R
 import com.example.whether2.adapters.WeatherAdapter
 import com.example.whether2.adapters.WeatherModel
@@ -17,6 +20,7 @@ import kotlin.math.min
 class HoursFragment : Fragment() {
 private lateinit var binding: FragmentHoursBinding
 private lateinit var adapter: WeatherAdapter
+private val model: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +33,10 @@ private lateinit var adapter: WeatherAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRcView()
+        model.liveDataCurrent.observe(viewLifecycleOwner){
+            Log.d("MyLog","City: ${it.hours}")
+        }
 
     }
     private fun initRcView() = with(binding){
