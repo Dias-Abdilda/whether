@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:backgroundTint="@color/card_blue_bg"
+    android:backgroundTint="@color/systemGrey"
     app:cardCornerRadius="20dp"
     app:cardElevation="0dp">
 
@@ -20,6 +20,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="@string/lunes_22_11_2022"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +33,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="@string/sunny"
-            android:textColor="#455A64"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvDate"
             app:layout_constraintTop_toBottomOf="@+id/tvDate" />
@@ -41,12 +42,12 @@
             android:id="@+id/im"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:contentDescription="@string/todo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_foreground"
-            tools:ignore="ImageContrastCheck"
-            android:contentDescription="@string/todo" />
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tvTemp"
@@ -54,7 +55,7 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:text="@string/_20_c"
-            android:textColor="#757575"
+            android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/im"

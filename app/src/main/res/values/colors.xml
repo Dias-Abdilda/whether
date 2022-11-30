@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="card_blue_bg">#6603A9F4</color>
     <color name="blue">#2FBBFA</color>
+    <color name="invis">#00000000</color>
+    <color name="systemGrey">#65404344</color>
 
 </resources>
