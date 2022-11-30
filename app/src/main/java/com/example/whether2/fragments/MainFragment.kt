@@ -67,7 +67,6 @@ class  MainFragment : Fragment() {
         checkPermission()
         init()
         updateCurrentCard()
-        getLocation()
     }
 
     override fun onResume() {
@@ -106,10 +105,6 @@ val lm = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
 
     private fun getLocation(){
-       if (!isLocationEnabled()){
-           Toast.makeText(requireContext(), "Location disabled", Toast.LENGTH_SHORT).show()
-       return
-       }
         val ct = CancellationTokenSource()
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
