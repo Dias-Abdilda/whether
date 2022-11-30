@@ -1,7 +1,9 @@
 package com.example.whether2.fragments
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -77,7 +80,18 @@ class  MainFragment : Fragment() {
 
     }
 
+
+private fun isLocationEnabled(): Boolean {
+val lm = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    return lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+}
+
+
     private fun getLocation(){
+       if (!isLocationEnabled()){
+           Toast.makeText(requireContext(), "Location disabled", Toast.LENGTH_SHORT).show()
+       return
+       }
         val ct = CancellationTokenSource()
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
