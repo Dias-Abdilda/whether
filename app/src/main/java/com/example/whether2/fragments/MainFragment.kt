@@ -2,9 +2,11 @@ package com.example.whether2.fragments
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +16,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.app.ActivityCompat
+import androidx.core.location.LocationManagerCompat.isLocationEnabled
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.whether2.DialogManager
 import com.example.whether2.MainViewModel
 import com.example.whether2.adapters.VpAdapter
 import com.example.whether2.adapters.WeatherModel
@@ -75,13 +79,22 @@ class  MainFragment : Fragment() {
         }.attach()
         ibSync.setOnClickListener{
             tabLayout.selectTab(tabLayout.getTabAt(0))
-            getLocation()
+            checkLocation()
         }
-
     }
+private fun checkLocation(){
+    if(isLocationEnabled()){
+        getLocation()
+    } else {
+        DialogManager.locationSettingsDialog(requireContext(), object : DialogManager.Listener{
+            override fun onClick() {
+                startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+            }
+        })
+    }
+}
 
-
-private fun isLocationEnabled(): Boolean {
+    private fun isLocationEnabled(): Boolean {
 val lm = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
     return lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
 }
