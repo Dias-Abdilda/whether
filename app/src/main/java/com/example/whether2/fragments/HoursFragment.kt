@@ -43,7 +43,7 @@ private val model: MainViewModel by activityViewModels()
     }
     private fun initRcView() = with(binding){
         rcView.layoutManager = LinearLayoutManager(activity)
-        adapter= WeatherAdapter()
+        adapter= WeatherAdapter(null)
         rcView.adapter=adapter
 
 

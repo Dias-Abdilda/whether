@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.whether2.MainViewModel
 import com.example.whether2.R
 import com.example.whether2.adapters.WeatherAdapter
+import com.example.whether2.adapters.WeatherModel
 import com.example.whether2.databinding.FragmentDaysBinding
 import com.example.whether2.databinding.FragmentHoursBinding
 
 
-class DaysFragment : Fragment() {
+class DaysFragment : Fragment(), WeatherAdapter.Listener {
     private lateinit var adapter: WeatherAdapter
 private lateinit var binding: FragmentDaysBinding
 private val model: MainViewModel by activityViewModels()
@@ -36,7 +37,7 @@ private val model: MainViewModel by activityViewModels()
 
     }
     private fun init()=with(binding){
-        adapter = WeatherAdapter()
+        adapter = WeatherAdapter(this@DaysFragment)
         rcView.layoutManager= LinearLayoutManager(activity)
         rcView.adapter = adapter
     }
@@ -44,5 +45,9 @@ private val model: MainViewModel by activityViewModels()
 
         @JvmStatic
         fun newInstance() = DaysFragment()
+    }
+
+    override fun onClick(item: WeatherModel) {
+        model.liveDataCurrent.value = item
     }
 }
