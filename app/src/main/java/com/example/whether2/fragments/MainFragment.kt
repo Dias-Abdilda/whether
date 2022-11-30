@@ -71,6 +71,7 @@ class  MainFragment : Fragment() {
                 tab, pos -> tab.text = tList[pos]
         }.attach()
         ibSync.setOnClickListener{
+            tabLayout.selectTab(tabLayout.getTabAt(0))
             getLocation()
         }
 
