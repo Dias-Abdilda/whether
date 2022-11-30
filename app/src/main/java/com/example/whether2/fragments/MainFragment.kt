@@ -70,6 +70,11 @@ class  MainFragment : Fragment() {
         getLocation()
     }
 
+    override fun onResume() {
+        super.onResume()
+   checkLocation()
+    }
+
     private fun init() = with(binding){
         fLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         val adapter = VpAdapter(activity as FragmentActivity, fList)
