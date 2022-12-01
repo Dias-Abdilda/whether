@@ -31,6 +31,7 @@ import com.example.whether2.databinding.FragmentMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
@@ -124,7 +125,7 @@ val lm = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
             return
         }
         fLocationClient.
-        getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, ct.token).addOnCompleteListener{
+        getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, ct.token).addOnCompleteListener{
             requestWeatherData("${it.result.latitude}, ${it.result.longitude}")
         }
 
