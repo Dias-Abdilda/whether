@@ -31,13 +31,13 @@ import com.example.whether2.databinding.FragmentMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.Priority
+//import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
-const val API_KEY = "132318b148ed40248e2103216222511"
+const val API_KEY = "9d6205358ba84c5fbed84337221512"
 
 @Suppress("SameParameterValue")
 class  MainFragment : Fragment() {
@@ -125,7 +125,7 @@ val lm = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
             return
         }
         fLocationClient.
-        getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, ct.token).addOnCompleteListener{
+        getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, ct.token).addOnCompleteListener{
             requestWeatherData("${it.result.latitude}, ${it.result.longitude}")
         }
 
@@ -161,7 +161,13 @@ val lm = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
     private fun requestWeatherData(city: String){
         val url =
-            "https://api.weatherapi.com/v1/forecast.json?key=$API_KEY&q=$city&days=3&aqi=no&alerts=no"
+            "https://api.weatherapi.com/v1/forecast.json?key=" +
+                    API_KEY +
+                    "&q=" +
+                    city +
+                    "&days=" +
+                    "5" +
+                    "&aqi=no&alerts=no"
         val queue =  Volley.newRequestQueue(context)
         val request = StringRequest(
             Request.Method.GET,
